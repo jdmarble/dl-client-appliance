@@ -1,0 +1,37 @@
+[Unit]
+Description=Transmission
+Requires=network-online.target
+After=network-online.target
+Requires=var-mnt-download.mount
+After=var-mnt-download.mount
+Requires=var-mnt-torrents.mount
+After=var-mnt-torrents.mount
+
+[Container]
+# Image
+AutoUpdate=registry
+Image=transmission.image
+
+# Network
+HostName=%N.%H
+PublishPort=9091:9091
+
+# Security
+User=1000
+Group=1000
+ReadOnly=yes
+NoNewPrivileges=yes
+DropCapability=all
+
+# Storage
+Volume=/var/mnt/torrents:/config:z
+Volume=/var/mnt/download:/download:z
+
+[Service]
+# Restart on crash
+Restart=always
+# Restart 10 seconds after the first failure.
+RestartSec=10
+
+[Install]
+WantedBy=default.target

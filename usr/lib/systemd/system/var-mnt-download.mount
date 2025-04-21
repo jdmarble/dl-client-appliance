@@ -1,0 +1,13 @@
+[Unit]
+Description=Download mount
+After=network.target
+Wants=network-online.target
+
+[Mount]
+What=unas-pro.jdmarble.net:/var/nfs/shared/media
+Where=/var/mnt/download
+Type=nfs
+Options=auto
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Transmission Image
+After=network-online.target
+
+[Image]
+Image=ghcr.io/jdmarble/container-transmission:latest
+
+[Service]
+# Retry if pull fails
+Restart=on-failure
+RestartSec=30
