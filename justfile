@@ -1,15 +1,15 @@
 container:
-    podman build --tag=ghcr.io/jdmarble/dl-client-appliance:latest .
+    sudo podman build --tag=ghcr.io/jdmarble/dl-client-appliance:latest .
 
 push: container
-    podman push ghcr.io/jdmarble/dl-client-appliance:latest
+    sudo podman push ghcr.io/jdmarble/dl-client-appliance:latest
 
 _tempdirs:
     mkdir -p output
     mkdir -p cache/rpmmd
 
 image type: container _tempdirs
-    podman run \
+    sudo podman run \
         --rm \
         --name bootc-image-builder \
         --interactive \
@@ -33,7 +33,7 @@ qcow2: (image "qcow2")
 
 qemu-test: qcow2
     qemu-system-x86_64 \
-        -M accel=hvf \
+        -M accel=kvm \
         -cpu host \
         -smp 2 \
         -m 2048 \

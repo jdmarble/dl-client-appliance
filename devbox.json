@@ -3,6 +3,7 @@
   "packages": [
     "qemu@latest",
     "podman@latest",
-    "just@latest"
+    "just@latest",
+    "skopeo@latest"
   ]
 }
