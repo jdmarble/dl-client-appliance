@@ -45,6 +45,6 @@ qemu-test: qcow2
         -smp 2 \
         -m 2048 \
         -device e1000,netdev=net0 \
-        -netdev user,id=net0,hostfwd=tcp::8443-:443,hostname=vm \
+        -netdev user,id=net0,hostfwd=tcp::9090-:9090,hostname=vm \
         -nographic \
         -snapshot output/qcow2/disk.qcow2
