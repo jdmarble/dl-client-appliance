@@ -1,0 +1,6 @@
+transmission.jdmarble.net {
+    reverse_proxy localhost:9091
+    tls jdmarble@jdmarble.com {
+	    dns cloudflare {env.CF_API_TOKEN}
+    }
+}
